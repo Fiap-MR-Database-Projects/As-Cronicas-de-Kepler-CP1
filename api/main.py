@@ -6,7 +6,7 @@ from api.database import get_connection
 from pydantic import BaseModel
 
 app = FastAPI()
-app.mount("/static", StaticFiles(directory="."), name="static")
+app.mount("/", StaticFiles(directory=".", html=True), name="static")
 
 app.add_middleware(
     CORSMiddleware,
