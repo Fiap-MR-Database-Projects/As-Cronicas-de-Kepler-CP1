@@ -1,7 +1,7 @@
-const API = "http://127.0.0.1:8000"
+const API = "https://as-cronicas-de-kepler-cp-1.vercel.app"
 
 function getAtivos(){
-    return fetch(API + "/api/ativos")
+    return fetch(API + "/ativos")
         .then(response => {
 
             if(!response.ok){
@@ -14,7 +14,7 @@ function getAtivos(){
 
 function processarEvento(evento){
 
-    return fetch(API + "/api/processar", {
+    return fetch(API + "/processar", {
 
         method: "POST",
 
