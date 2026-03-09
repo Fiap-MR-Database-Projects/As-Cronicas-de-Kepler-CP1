@@ -1,9 +1,12 @@
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from fastapi import FastAPI
 from api.database import get_connection
 from pydantic import BaseModel
 
 app = FastAPI()
+app.mount("/static", StaticFiles(directory="."), name="static")
 
 app.add_middleware(
     CORSMiddleware,
@@ -20,7 +23,7 @@ class EventoRequest(BaseModel):
 
 @app.get("/")
 def home():
-    return {"mensagem": "Mercado Interestelar ativo"}
+    return FileResponse("index.html")
 
 @app.get("/ativos")
 def listar_ativos():
