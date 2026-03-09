@@ -24,6 +24,9 @@ class EventoRequest(BaseModel):
 @app.get("/")
 def home():
     return FileResponse("index.html")
+@app.get("/script.js")
+def serve_script():
+    return FileResponse("script.js", media_type="application/javascript")
 
 @app.get("/ativos")
 def listar_ativos():
